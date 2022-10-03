@@ -24,7 +24,7 @@
         <layer name="jaxrs" />
     </dependencies>
 
-    <feature-group name="mvc-krazo" />
+    <!-- <feature-group name="mvc-krazo" /> -->
 
     <packages>
         <package name="jakarta.mvc.api" />
