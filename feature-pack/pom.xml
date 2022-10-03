@@ -83,7 +83,7 @@
                         </goals>
                         <phase>prepare-package</phase>
                         <configuration>
-                            <fork-embedded>true</fork-embedded>
+                            <fork-embedded>${galleon.fork.embedded}</fork-embedded>
                         </configuration>
                     </execution>
                 </executions>
