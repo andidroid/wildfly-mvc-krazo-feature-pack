@@ -129,7 +129,7 @@
 		<wildfly-galleon-plugin.version>6.2.0.Final</wildfly-galleon-plugin.version>
 
         <!-- Galleon -->
-        <galleon.fork.embedded>false</galleon.fork.embedded>
+        <galleon.fork.embedded>true</galleon.fork.embedded>
         <galleon.log.time>true</galleon.log.time>
         <!-- Builds need to override this -->
         <galleon.wildfly.home>/tmp</galleon.wildfly.home>
