@@ -36,17 +36,18 @@ If you want to use a Galleon 'universe' (see the Galleon documentation) you coul
             <default-configs inherit="false" />
         </dependency>
     </dependencies>
+
     <!-- <default-packages>
         <package name="modules.all" />
         <package name="docs" />
         <package name="docs.licenses.merge" />
     </default-packages> -->
-    <generate-feature-specs>
+
+    <!-- <generate-feature-specs>
         <extensions>
             <standalone>
-                <!-- TODO Use the name of the module implementing your subsystem -->
                 <extension>org.wildfly.extension.mvc-krazo</extension>
             </standalone>
         </extensions>
-    </generate-feature-specs>
+    </generate-feature-specs> -->
 </build>
