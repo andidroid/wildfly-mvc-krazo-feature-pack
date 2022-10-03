@@ -73,7 +73,7 @@
 
 
         
-        <module name="jakarta.mvc.api" />
+        <module name="jakarta.mvc.api" export="true"/>
         <module name="org.eclipse.krazo.krazo-core" />
         <module name="org.eclipse.krazo.krazo-resteasy" />
     </dependencies>
