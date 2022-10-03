@@ -1,0 +1,12 @@
+name: Delete Published Maven Packages
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/delete-package-versions@v3
+        with:
+          package-name: "me.andidroid.wildfly-mvc-krazo-feature-pack"
+          # num-old-versions-to-delete: 5
+          min-versions-to-keep: 1
