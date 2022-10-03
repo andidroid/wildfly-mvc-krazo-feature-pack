@@ -1,0 +1,12 @@
+<module xmlns="urn:jboss:module:1.9" name="jakarta.mvc.api">
+    <resources>
+        <artifact name="${jakarta.mvc:jakarta.mvc-api}" />
+    </resources>
+
+
+    <dependencies>
+        <module name="javax.api" />
+        <module name="javax.enterprise.api" />
+        <module name="javax.ws.rs.api" />
+    </dependencies>
+</module>
