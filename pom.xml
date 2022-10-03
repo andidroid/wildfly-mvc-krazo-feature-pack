@@ -22,7 +22,7 @@
         <version>0.1.0</version>
     </parent>
     <groupId>me.andidroid</groupId>
-    <artifactId>wildfly-mvc-krazo-feature-pack</artifactId>
+    <artifactId>wildfly-mvc-krazo-feature-pack-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>WildFly Galleon FP Template - Parent</name>

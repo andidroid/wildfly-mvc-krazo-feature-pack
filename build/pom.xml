@@ -18,7 +18,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>me.andidroid</groupId>
-        <artifactId>wildfly-mvc-krazo-feature-pack</artifactId>
+        <artifactId>wildfly-mvc-krazo-feature-pack-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -95,7 +95,7 @@
                                         <layer>management</layer>
                                         <!-- Layers from this FP  -->
                                         <!-- TODO - rename to what you have called your layer -->
-                                        <layer>template-layer</layer>
+                                        <layer>mvc-krazo</layer>
                                     </layers>
                                 </config>
                             </configurations>

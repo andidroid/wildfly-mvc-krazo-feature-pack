@@ -18,7 +18,7 @@
     TODO Replace 'template-layer' in both 'name' and the name of the directory
     with the name of your layer
 -->
-<layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0" name="mvc-krazo-freemarker">
+<layer-spec xmlns="urn:jboss:galleon:layer-spec:1.0" name="mvc-krazo-jinja2">
     <dependencies>
         <layer name="cdi" />
         <layer name="jaxrs" />
@@ -26,8 +26,8 @@
     </dependencies>
 
     <packages>
-        <package name="org.eclipse.krazo.ext.krazo-freemarker" />
-        <package name="org.freemarker" />
+        <package name="org.eclipse.krazo.ext.krazo-jinja2" />
+        <package name="com.hubspot.jinjava" />
     </packages>
 
 </layer-spec>

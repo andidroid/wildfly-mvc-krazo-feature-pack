@@ -26,7 +26,7 @@
     </dependencies>
 
     <packages>
-        <package name="org.eclipse.krazo.ext.velocity" />
+        <package name="org.eclipse.krazo.ext.krazo-velocity" />
         <package name="org.apache.velocity" />
     </packages>
 

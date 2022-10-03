@@ -26,7 +26,7 @@
     </dependencies>
 
     <packages>
-        <package name="org.eclipse.krazo.ext.stringtemplate" />
+        <package name="org.eclipse.krazo.ext.krazo-stringtemplate" />
         <package name="org.antlr.ST4" />
     </packages>
 

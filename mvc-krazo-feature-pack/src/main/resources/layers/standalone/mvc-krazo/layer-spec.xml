@@ -24,11 +24,11 @@
         <layer name="jaxrs" />
     </dependencies>
 
-    <!-- <feature-group name="mvc-krazo" /> -->
+    <feature-group name="mvc-krazo" />
 
     <packages>
         <package name="jakarta.mvc.api" />
-        <!-- <package name="org.wildfly.extension.mvc-krazo" /> -->
+        <package name="org.wildfly.extension.mvc-krazo" />
 
         <package name="org.eclipse.krazo.krazo-core" />
         <package name="org.eclipse.krazo.krazo-resteasy" />
