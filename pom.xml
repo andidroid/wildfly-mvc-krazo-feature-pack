@@ -372,8 +372,8 @@
         <!-- <module>build</module> -->
         <module>dependency</module>
         <!-- <module>example</module> -->
-        <module>mvc-krazo-feature-pack</module>
         <module>subsystem</module>
+        <module>mvc-krazo-feature-pack</module>
         <!-- <module>testsuite</module> -->
     </modules>
 
