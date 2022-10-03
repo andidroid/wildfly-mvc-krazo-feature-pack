@@ -29,6 +29,72 @@
 
     <description>WildFly Galleon Pack Template</description>
 
+
+	<url>https://github.com/andidroid/test-feature-pack</url>
+
+	<licenses>
+		<license>
+			<name>Do What The F*ck You Want To Public License</name>
+			<url>http://www.wtfpl.net/txt/copying/</url>
+			<distribution>repo</distribution>
+			<comments>The Do What The Fuck You Want To Public License (WTFPL) is a free software license.</comments>
+		</license>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+	</licenses>
+
+	<scm>
+		<connection>scm:git:https://github.com/andidroid/wildfly-mvc-krazo-feature-pack.git</connection>
+		<developerConnection>scm:git:https://github.com/andidroid/wildfly-mvc-krazo-feature-pack.git</developerConnection>
+		<url>https://github.com/andidroid/wildfly-mvc-krazo-feature-pack.git</url>
+		<tag>HEAD</tag>
+	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub andidroid Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/andidroid/wildfly-mvc-krazo-feature-pack</url>
+		</repository>
+		<snapshotRepository>
+			<id>github</id>
+			<name>GitHub andidroid Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/andidroid/wildfly-mvc-krazo-feature-pack</url>
+		</snapshotRepository>
+		<site>
+			<id>github</id>
+			<name>GitHub andidroid Apache Maven Packages</name>
+			<url>scm:git:https://github.com/andidroid/wildfly-mvc-krazo-feature-pack.git</url>
+		</site>
+	</distributionManagement>
+
+	<!-- External non standard repositories -->
+	<repositories>
+		<repository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/andidroid/test</url>
+		</repository>
+		<repository>
+			<id>JBossEA</id>
+			<url>https://repository.jboss.org/nexus/content/repositories/ea/</url>
+		</repository>
+        <repository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Repository Group</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>jakarta</id>
+            <name>jakarta</name>
+            <url>https://jakarta.oss.sonatype.org/content/repositories/staging/</url>
+            <layout>default</layout>
+        </repository>
+	</repositories>
+
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -317,22 +383,5 @@
         <module>subsystem</module>
         <!-- <module>testsuite</module> -->
     </modules>
-
-    <repositories>
-        <repository>
-            <id>jboss-public-repository-group</id>
-            <name>JBoss Public Repository Group</name>
-            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-            <layout>default</layout>
-        </repository>
-        <repository>
-            <id>jakarta</id>
-            <name>jakarta</name>
-            <url>https://jakarta.oss.sonatype.org/content/repositories/staging/</url>
-            <layout>default</layout>
-        </repository>
-        
-    </repositories>
-    
 
 </project>
