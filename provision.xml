@@ -42,7 +42,7 @@
             <include name="cloud-profile" />
 
             <!-- Our layer(s) -->
-            <include name="template-layer" />
+            <include name="mvc-krazo" />
         </layers>
     </config>
     <options>
