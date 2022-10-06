@@ -336,23 +336,7 @@
                     <groupId>org.wildfly.galleon-plugins</groupId>
                     <artifactId>wildfly-galleon-maven-plugin</artifactId>
                     <version>${wildfly-galleon-plugin.version}</version>
-                     <dependencies>
-                        <!--
-                            feature-spec-gen uses wildfly-embedded to generate the feature specs,
-                            hence the designated wildfly-embedded version must match the pack one
-                        -->
-                        <dependency>
-                            <groupId>org.wildfly.core</groupId>
-                            <artifactId>wildfly-embedded</artifactId>
-                            <version>${wildfly-core.version}</version>
-                        </dependency>
-                        <!-- If you add a dependency on wildfly-embedded you need to bring your own transitives -->
-                        <dependency>
-                            <groupId>org.wildfly.common</groupId>
-                            <artifactId>wildfly-common</artifactId>
-                            <version>${wildfly-common.version}</version>
-                        </dependency>
-                    </dependencies>
+
                 </plugin>
                 
             </plugins>
