@@ -126,7 +126,7 @@
         <wildfly-common.version>1.6.0.Final</wildfly-common.version>
 
 		<galleon.version>5.0.5.Final</galleon.version>
-		<wildfly-galleon-plugin.version>6.2.0.Final</wildfly-galleon-plugin.version>
+		<wildfly-galleon-plugin.version>6.1.0.Final</wildfly-galleon-plugin.version>
 
         <!-- Galleon -->
         <galleon.fork.embedded>true</galleon.fork.embedded>
