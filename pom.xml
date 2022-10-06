@@ -105,7 +105,7 @@
 
 
         <mvc.version>2.1.0</mvc.version>
-        <krazo.version>3.0.0</krazo.version>
+        <krazo.version>3.0.1</krazo.version>
         <krazo-extensions.version>3.0.0</krazo-extensions.version>
         <resteasy.version>6.2.0.Final</resteasy.version>
 
