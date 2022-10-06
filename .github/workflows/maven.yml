@@ -10,11 +10,10 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v3
-      - name: Set up JDK 17
+      - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
-          java-version: "17"
-          distribution: "temurin"
+          java-version: "11"
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
       - name: Cache Maven packages
@@ -26,8 +25,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ env.cache-name }}-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Build with Maven
-        run: |
-          export MAVEN_OPTS="--add-exports=java.xml/com.sun.org.apache.xerces.internal.parsers=ALL-UNNAMED --add-exports=java.xml/com.sun.org.apache.xerces.internal.util=ALL-UNNAMED" # needed for JDK 16+ only
-          mvn -B -s settings.xml -e -Dgalleon.fork.embedded=false package
+        run:
+          mvn -B -s settings.xml -e package
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
