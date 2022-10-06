@@ -26,6 +26,8 @@ jobs:
           key: ${{ runner.os }}-m2-${{ env.cache-name }}-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Build with Maven
-        run: mvn package -s settings.xml -e -Dgalleon.fork.embedded=false --add-exports=java.xml/com.sun.org.apache.xerces.internal.parsers=ALL-UNNAMED --add-exports=java.xml/com.sun.org.apache.xerces.internal.util=ALL-UNNAMED
+        run: |
+          export MAVEN_OPTS="--add-exports=java.xml/com.sun.org.apache.xerces.internal.parsers=ALL-UNNAMED --add-exports=java.xml/com.sun.org.apache.xerces.internal.util=ALL-UNNAMED" # needed for JDK 16+ only
+          mvn -B -s settings.xml -e -Dgalleon.fork.embedded=false package
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
