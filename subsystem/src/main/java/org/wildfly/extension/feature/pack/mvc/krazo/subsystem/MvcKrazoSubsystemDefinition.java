@@ -29,6 +29,7 @@ import org.jboss.as.controller.PersistentResourceDefinition;
 import org.jboss.as.controller.SimpleResourceDefinition;
 import org.jboss.as.controller.capability.RuntimeCapability;
 import org.jboss.as.controller.registry.ManagementResourceRegistration;
+import org.jboss.as.controller.registry.RuntimePackageDependency;
 import org.jboss.as.server.AbstractDeploymentChainStep;
 import org.jboss.as.server.DeploymentProcessorTarget;
 import org.jboss.dmr.ModelNode;
@@ -61,7 +62,7 @@ public class MvcKrazoSubsystemDefinition extends PersistentResourceDefinition
     @Override
     public void registerAdditionalRuntimePackages(ManagementResourceRegistration resourceRegistration)
     {
-        super.registerAdditionalRuntimePackages(resourceRegistration);
+        //super.registerAdditionalRuntimePackages(resourceRegistration);
         // TODO - If your feature-pack needs any other modules, you should add those here, and remove the line above
         /*
          * resourceRegistration.registerAdditionalRuntimePackages(
@@ -73,6 +74,15 @@ public class MvcKrazoSubsystemDefinition extends PersistentResourceDefinition
          * RuntimePackageDependency.passive("my.passive.module")
          * );
          */
+         System.out.println("### MVC Krazo registerAdditionalRuntimePackages ###");
+         resourceRegistration.registerAdditionalRuntimePackages(
+                RuntimePackageDependency.required("jakarta.mvc.api"),
+                RuntimePackageDependency.required("org.jboss.resteasy.resteasy-jaxrs"),
+                RuntimePackageDependency.required("org.eclipse.krazo.krazo-core"),
+                RuntimePackageDependency.required("org.eclipse.krazo.krazo-resteasy"),
+                RuntimePackageDependency.optional("org.eclipse.krazo.ext.krazo-jinja2"),
+                RuntimePackageDependency.optional("org.eclipse.krazo.ext.krazo-velocity"),
+                RuntimePackageDependency.required("org.wildfly.security.manager"));
     }
     
     static class AddHandler extends AbstractBoottimeAddStepHandler

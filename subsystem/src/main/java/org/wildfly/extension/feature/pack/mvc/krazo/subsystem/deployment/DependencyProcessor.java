@@ -89,8 +89,15 @@ public class DependencyProcessor implements DeploymentUnitProcessor
         moduleSpecification.addLocalDependency(new ModuleDependency(moduleLoader, "org.jboss.resteasy.resteasy-validator-provider", false, false, true, false));
         
         // moduleSpecification.addSystemDependency(cdiDependency(new ModuleDependency(moduleLoader, "me.andidroid.mvc-krazo-dependency", false, false, true, false)));
-        moduleSpecification.addLocalDependency(new ModuleDependency(moduleLoader, KRAZO, false, false, true, false));
-        moduleSpecification.addLocalDependency(new ModuleDependency(moduleLoader, KRAZO_RESTEASY, false, false, true, false));
+        moduleSpecification.addSystemDependency(new ModuleDependency(moduleLoader, KRAZO, false, false, true, false));
+        moduleSpecification.addSystemDependency(new ModuleDependency(moduleLoader, KRAZO_RESTEASY, false, false, true, false));
+
+        ModuleDependency jinja2ModuleDependency = new ModuleDependency(moduleLoader, "org.eclipse.krazo.ext.krazo-jinja2", true, false, true, false);
+        jinja2ModuleDependency.addImportFilter(s -> s.equals("META-INF"), true);
+        moduleSpecification.addSystemDependency(jinja2ModuleDependency);
+        ModuleDependency velocityModuleDependency = new ModuleDependency(moduleLoader, "org.eclipse.krazo.ext.krazo-velocity", true, false, true, false);
+        velocityModuleDependency.addImportFilter(s -> s.equals("META-INF"), true);
+        moduleSpecification.addSystemDependency(velocityModuleDependency);
     }
     
     private boolean isMVCDeployment(DeploymentUnit deploymentUnit)
