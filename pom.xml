@@ -121,7 +121,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
 		<wildfly.version>27.0.0.Beta1</wildfly.version>
-        <wildfly-core.version>19.0.0.Beta18</wildfly-core.version>
+        <wildfly-core.version>19.0.0.Final</wildfly-core.version>
         
         <wildfly-common.version>1.6.0.Final</wildfly-common.version>
 
