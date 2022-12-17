@@ -112,7 +112,7 @@
         <freemarker.version>2.3.31</freemarker.version>
         <velocity.version>2.3</velocity.version>
         <antlr.version>3.5.2</antlr.version>
-        <stringtemplate.version>4.3.1</stringtemplate.version>
+        <stringtemplate.version>4.3.4</stringtemplate.version>
         <jinjava.version>2.6.0</jinjava.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
