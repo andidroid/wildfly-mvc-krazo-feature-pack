@@ -79,7 +79,7 @@
                     <execution>
                         <id>wildfly-mvc-krazo-feature-pack-build</id>
                         <goals>
-                            <goal>build-feature-pack</goal>
+                            <goal>build-user-feature-pack</goal>
                         </goals>
                         <phase>prepare-package</phase>
                         <configuration>

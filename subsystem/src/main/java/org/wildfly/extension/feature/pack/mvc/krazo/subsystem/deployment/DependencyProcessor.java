@@ -76,7 +76,7 @@ public class DependencyProcessor implements DeploymentUnitProcessor
         // moduleSpecification.addSystemDependency(new ModuleDependency(moduleLoader, "org.wildfly.extension.mvc-krazo-subsystem", false, false, true, false));
         
         // all modules get the API dependency
-        moduleSpecification.addSystemDependency(new ModuleDependency(moduleLoader, MVC_API, false, false, false, false));
+        moduleSpecification.addSystemDependency(cdiDependency(new ModuleDependency(moduleLoader, MVC_API, false, false, true, false)));
         log.info("### MVC Krazo isMVCDeployment ### " + isMVCDeployment(deploymentUnit));
         if(!isMVCDeployment(deploymentUnit))
         {
@@ -85,19 +85,17 @@ public class DependencyProcessor implements DeploymentUnitProcessor
         
         log.debugf("Initializing Krazo for deployment %s", deploymentUnit.getName());
         
-        moduleSpecification.addLocalDependency(new ModuleDependency(moduleLoader, "org.jboss.resteasy.resteasy-jaxrs", false, false, true, false));
-        moduleSpecification.addLocalDependency(new ModuleDependency(moduleLoader, "org.jboss.resteasy.resteasy-validator-provider", false, false, true, false));
+        moduleSpecification.addSystemDependency(new ModuleDependency(moduleLoader, "org.jboss.resteasy.resteasy-jaxrs", false, false, true, false));
+        moduleSpecification.addSystemDependency(new ModuleDependency(moduleLoader, "org.jboss.resteasy.resteasy-validator-provider", false, false, true, false));
         
         // moduleSpecification.addSystemDependency(cdiDependency(new ModuleDependency(moduleLoader, "me.andidroid.mvc-krazo-dependency", false, false, true, false)));
-        moduleSpecification.addSystemDependency(new ModuleDependency(moduleLoader, KRAZO, false, false, true, false));
-        moduleSpecification.addSystemDependency(new ModuleDependency(moduleLoader, KRAZO_RESTEASY, false, false, true, false));
-
-        ModuleDependency jinja2ModuleDependency = new ModuleDependency(moduleLoader, "org.eclipse.krazo.ext.krazo-jinja2", true, false, true, false);
-        jinja2ModuleDependency.addImportFilter(s -> s.equals("META-INF"), true);
-        moduleSpecification.addSystemDependency(jinja2ModuleDependency);
-        ModuleDependency velocityModuleDependency = new ModuleDependency(moduleLoader, "org.eclipse.krazo.ext.krazo-velocity", true, false, true, false);
-        velocityModuleDependency.addImportFilter(s -> s.equals("META-INF"), true);
-        moduleSpecification.addSystemDependency(velocityModuleDependency);
+        moduleSpecification.addSystemDependency(cdiDependency(new ModuleDependency(moduleLoader, KRAZO, false, false, true, false)));
+        moduleSpecification.addSystemDependency(cdiDependency(new ModuleDependency(moduleLoader, KRAZO_RESTEASY, false, false, true, false)));
+        
+        moduleSpecification.addSystemDependency(cdiDependency(new ModuleDependency(moduleLoader, "org.eclipse.krazo.ext.krazo-jinja2", true, false, true, false)));
+        moduleSpecification.addSystemDependency(cdiDependency(new ModuleDependency(moduleLoader, "org.eclipse.krazo.ext.krazo-velocity", true, false, true, false)));
+        
+        log.info("### MVC Krazo modules registered ### " + isMVCDeployment(deploymentUnit));
     }
     
     private boolean isMVCDeployment(DeploymentUnit deploymentUnit)
