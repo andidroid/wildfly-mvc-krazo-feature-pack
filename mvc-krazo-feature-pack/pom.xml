@@ -19,7 +19,7 @@
     <parent>
         <groupId>me.andidroid</groupId>
         <artifactId>wildfly-mvc-krazo-feature-pack-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -79,7 +79,7 @@
                     <execution>
                         <id>wildfly-mvc-krazo-feature-pack-build</id>
                         <goals>
-                            <goal>build-user-feature-pack</goal>
+                            <goal>build-feature-pack</goal>
                         </goals>
                         <phase>prepare-package</phase>
                         <configuration>

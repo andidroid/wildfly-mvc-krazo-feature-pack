@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<!-- TODO Rename this file and the occurrences of 'mvc-krazo-subsystem' to what you set in MvcKrazoExtension.SUBSYSTEM_NAME -->
+<!-- TODO Rename this file and the occurrences of 'mvc-krazo' to what you set in MvcKrazoExtension.SUBSYSTEM_NAME -->
 <feature-group-spec name="mvc-krazo" xmlns="urn:jboss:galleon:feature-group:1.0">
   <feature spec="subsystem.mvc-krazo" />
 </feature-group-spec>
