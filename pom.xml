@@ -97,17 +97,17 @@
 
     <properties>
         <java.version>11</java.version>
-		<javaee.version>10.0.0</javaee.version>
-		<microprofile.version>6.0</microprofile.version>
+	<javaee.version>10.0.0</javaee.version>
+	<microprofile.version>6.0</microprofile.version>
 
-        <slf4j.version>1.7.36</slf4j.version>
+        <slf4j.version>2.0.7</slf4j.version>
         <junit.jupiter.version>5.9.2</junit.jupiter.version>
 
 
         <mvc.version>2.1.0</mvc.version>
         <krazo.version>3.0.1</krazo.version>
         <krazo-extensions.version>3.0.0</krazo-extensions.version>
-        <resteasy.version>6.2.1.Final</resteasy.version>
+        <resteasy.version>6.2.3.Final</resteasy.version>
 
         <freemarker.version>2.3.31</freemarker.version>
         <velocity.version>2.3</velocity.version>
@@ -120,8 +120,8 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
-		<wildfly.version>27.0.1.Final</wildfly.version>
-        <wildfly-core.version>19.0.1.Final</wildfly-core.version>
+		<wildfly.version>28.0.0.Beta1</wildfly.version>
+        <wildfly-core.version>20.0.0.Beta8</wildfly-core.version>
         
         <wildfly-common.version>1.6.0.Final</wildfly-common.version>
 
