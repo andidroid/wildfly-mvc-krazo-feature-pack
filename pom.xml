@@ -109,7 +109,7 @@
         <krazo-extensions.version>3.0.0</krazo-extensions.version>
         <resteasy.version>6.2.3.Final</resteasy.version>
 
-        <freemarker.version>2.3.31</freemarker.version>
+        <freemarker.version>2.3.32</freemarker.version>
         <velocity.version>2.3</velocity.version>
         <antlr.version>3.5.2</antlr.version>
         <stringtemplate.version>4.3.1</stringtemplate.version>
