@@ -39,5 +39,9 @@
         <module name="org.jboss.weld.spi" />
         <module name="org.jboss.weld.api" />
 
+        <module name="org.eclipse.krazo.ext.krazo-jinja2" optional="true"/>
+        <module name="org.eclipse.krazo.ext.krazo-freemarker" optional="true"/>
+        <module name="org.eclipse.krazo.ext.krazo-stringtemplate" optional="true"/>
+        <module name="org.eclipse.krazo.ext.krazo-velocity" optional="true"/>
     </dependencies>
 </module>

@@ -19,11 +19,11 @@
     <parent>
         <groupId>me.andidroid</groupId>
         <artifactId>test</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
     </parent>
     <groupId>me.andidroid</groupId>
     <artifactId>wildfly-mvc-krazo-feature-pack-parent</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>WildFly Galleon FP Template - Parent</name>
 
@@ -107,7 +107,8 @@
         <mvc.version>2.1.0</mvc.version>
         <krazo.version>3.0.1</krazo.version>
         <krazo-extensions.version>3.0.0</krazo-extensions.version>
-        <resteasy.version>6.2.3.Final</resteasy.version>
+        <mvc-toolbox.version>2.1.0</mvc-toolbox.version>
+        <resteasy.version>6.2.5.Final</resteasy.version>
 
         <freemarker.version>2.3.31</freemarker.version>
         <velocity.version>2.3</velocity.version>
@@ -120,13 +121,13 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
-		<wildfly.version>28.0.1.Final</wildfly.version>
-        <wildfly-core.version>20.0.2.Final</wildfly-core.version>
+		<wildfly.version>30.0.0.Final</wildfly.version>
+        <wildfly-core.version>22.0.1.Final</wildfly-core.version>
         
         <wildfly-common.version>1.6.0.Final</wildfly-common.version>
 
-		<galleon.version>5.1.0.Final</galleon.version>
-		<wildfly-galleon-plugin.version>6.4.2.Final</wildfly-galleon-plugin.version>
+		<galleon.version>5.2.1.Final</galleon.version>
+		<wildfly-galleon-plugin.version>6.5.0.Final</wildfly-galleon-plugin.version>
 
         <!-- Galleon -->
         <galleon.fork.embedded>true</galleon.fork.embedded>
@@ -272,6 +273,17 @@
                 <groupId>org.eclipse.krazo.ext</groupId>
                 <artifactId>krazo-jinja2</artifactId>
                 <version>${krazo-extensions.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.chkal.mvc-toolbox</groupId>
+                <artifactId>mvc-toolbox-core</artifactId>
+                <version>${mvc-toolbox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.chkal.mvc-toolbox</groupId>
+                <artifactId>mvc-toolbox-jsp</artifactId>
+                <version>${mvc-toolbox.version}</version>
             </dependency>
 
             <!-- Project -->

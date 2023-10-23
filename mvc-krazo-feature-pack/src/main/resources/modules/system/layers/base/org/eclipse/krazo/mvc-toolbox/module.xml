@@ -20,9 +20,10 @@
   ~ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
-<module name="org.eclipse.krazo.krazo-resteasy" xmlns="urn:jboss:module:1.8">
+<module name="org.eclipse.krazo.mvc-toolbox" xmlns="urn:jboss:module:1.8">
     <resources>
-        <artifact name="${org.eclipse.krazo:krazo-resteasy}" />
+        <artifact name="${de.chkal.mvc-toolbox:mvc-toolbox-core}" />
+        <artifact name="${de.chkal.mvc-toolbox:mvc-toolbox-jsp}" />
     </resources>
     <dependencies>
         <module name="jakarta.mvc.api" />
@@ -31,10 +32,5 @@
         <module name="javax.servlet.api" />
         <module name="javax.validation.api" optional="true" />
         <module name="org.jboss.resteasy.resteasy-validator-provider" optional="true" services="export" export="true" />
-
-        <module name="org.eclipse.krazo.ext.krazo-jinja2" optional="true"/>
-        <module name="org.eclipse.krazo.ext.krazo-freemarker" optional="true"/>
-        <module name="org.eclipse.krazo.ext.krazo-stringtemplate" optional="true"/>
-        <module name="org.eclipse.krazo.ext.krazo-velocity" optional="true"/>
     </dependencies>
 </module>

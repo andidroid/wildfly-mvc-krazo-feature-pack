@@ -34,90 +34,111 @@ import org.jboss.modules.filter.PathFilter;
  * @author <a href="mailto:kabir.khan@jboss.com">Kabir Khan</a>
  */
 // TODO Rename this class to something which makes sense for your subsystem
-public class DependencyProcessor implements DeploymentUnitProcessor
-{
-    // TODO: change to jakarta
-    private static final String MVC_API = "jakarta.mvc.api";
-    private static final String KRAZO = "org.eclipse.krazo.krazo-core";
-    private static final String KRAZO_RESTEASY = "org.eclipse.krazo.krazo-resteasy";
-    // TODO: change to jakarta
-    private static final DotName CONTROLLER = DotName.createSimple("jakarta.mvc.Controller");
-    
-    private final Logger log = Logger.getLogger(DependencyProcessor.class);
-    
-    public static final Phase PHASE = Phase.DEPENDENCIES;
-    public static final int PRIORITY = Phase.DEPENDENCIES_JAXRS;
-    
-    // @Override
-    public void deploy(DeploymentPhaseContext phaseContext)
-    {
-        DeploymentUnit deploymentUnit = phaseContext.getDeploymentUnit();
-        
-        addModuleDependencies(deploymentUnit);
-    }
-    
-    // @Override
-    public void undeploy(DeploymentUnit context)
-    {
-    }
-    
-    private void addModuleDependencies(DeploymentUnit deploymentUnit)
-    {
-        final ModuleSpecification moduleSpecification = deploymentUnit.getAttachment(Attachments.MODULE_SPECIFICATION);
-        final ModuleLoader moduleLoader = Module.getBootModuleLoader();
-        
-        // Pull in dependencies needed by deployments in the subsystem
-        
-        // This is needed if running with a security manager, and seems to be needed by arquillian in all cases
-        moduleSpecification.addSystemDependency(new ModuleDependency(moduleLoader, "org.wildfly.security.manager", false, false, true, false));
-        // TODO use the name of the modules after renaming, and add any other dependencies
-        // In this case we don't need any classes from the subsystem module itself so we don't need to add it to the
-        // deployment's module dependencies
-        // moduleSpecification.addSystemDependency(new ModuleDependency(moduleLoader, "org.wildfly.extension.mvc-krazo-subsystem", false, false, true, false));
-        
-        // all modules get the API dependency
-        moduleSpecification.addSystemDependency(cdiDependency(new ModuleDependency(moduleLoader, MVC_API, false, false, true, false)));
-        log.info("### MVC Krazo isMVCDeployment ### " + isMVCDeployment(deploymentUnit));
-        if(!isMVCDeployment(deploymentUnit))
-        {
-            return;
+public class DependencyProcessor implements DeploymentUnitProcessor {
+        // TODO: change to jakarta
+        private static final String MVC_API = "jakarta.mvc.api";
+        private static final String KRAZO = "org.eclipse.krazo.krazo-core";
+        private static final String KRAZO_RESTEASY = "org.eclipse.krazo.krazo-resteasy";
+        // TODO: change to jakarta
+        private static final DotName CONTROLLER = DotName.createSimple("jakarta.mvc.Controller");
+
+        private final Logger log = Logger.getLogger(DependencyProcessor.class);
+
+        public static final Phase PHASE = Phase.DEPENDENCIES;
+        public static final int PRIORITY = Phase.DEPENDENCIES_JAXRS;
+
+        // @Override
+        public void deploy(DeploymentPhaseContext phaseContext) {
+                DeploymentUnit deploymentUnit = phaseContext.getDeploymentUnit();
+
+                addModuleDependencies(deploymentUnit);
         }
-        
-        log.debugf("Initializing Krazo for deployment %s", deploymentUnit.getName());
-        
-        moduleSpecification.addSystemDependency(new ModuleDependency(moduleLoader, "org.jboss.resteasy.resteasy-jaxrs", false, false, true, false));
-        moduleSpecification.addSystemDependency(new ModuleDependency(moduleLoader, "org.jboss.resteasy.resteasy-validator-provider", false, false, true, false));
-        
-        // moduleSpecification.addSystemDependency(cdiDependency(new ModuleDependency(moduleLoader, "me.andidroid.mvc-krazo-dependency", false, false, true, false)));
-        moduleSpecification.addSystemDependency(cdiDependency(new ModuleDependency(moduleLoader, KRAZO, false, false, true, false)));
-        moduleSpecification.addSystemDependency(cdiDependency(new ModuleDependency(moduleLoader, KRAZO_RESTEASY, false, false, true, false)));
-        
-        moduleSpecification.addSystemDependency(cdiDependency(new ModuleDependency(moduleLoader, "org.eclipse.krazo.ext.krazo-jinja2", true, false, true, false)));
-        moduleSpecification.addSystemDependency(cdiDependency(new ModuleDependency(moduleLoader, "org.eclipse.krazo.ext.krazo-velocity", true, false, true, false)));
-        
-        log.info("### MVC Krazo modules registered ### " + isMVCDeployment(deploymentUnit));
-    }
-    
-    private boolean isMVCDeployment(DeploymentUnit deploymentUnit)
-    {
-        final CompositeIndex index = deploymentUnit.getAttachment(Attachments.COMPOSITE_ANNOTATION_INDEX);
-        
-        final List<AnnotationInstance> annotations = index.getAnnotations(CONTROLLER);
-        return !annotations.isEmpty();
-    }
-    
-    private ModuleDependency cdiDependency(ModuleDependency moduleDependency)
-    {
-        // This is needed following https://issues.redhat.com/browse/WFLY-13641 / https://github.com/wildfly/wildfly/pull/13406
-        moduleDependency.addImportFilter(new PathFilter()
-        {
-            
-            public boolean accept(String s)
-            {
-                return s.equals("META-INF");
-            }
-            
-        }, true);
-        return moduleDependency;
-    }
+
+        // @Override
+        public void undeploy(DeploymentUnit context) {
+        }
+
+        private void addModuleDependencies(DeploymentUnit deploymentUnit) {
+                final ModuleSpecification moduleSpecification = deploymentUnit
+                                .getAttachment(Attachments.MODULE_SPECIFICATION);
+                final ModuleLoader moduleLoader = Module.getBootModuleLoader();
+
+                // Pull in dependencies needed by deployments in the subsystem
+                moduleSpecification
+                                .addSystemDependency(new ModuleDependency(moduleLoader, "org.jboss.jandex", false,
+                                                false, true, false));
+                // This is needed if running with a security manager, and seems to be needed by
+                // arquillian in all cases
+                moduleSpecification.addSystemDependency(
+                                new ModuleDependency(moduleLoader, "org.wildfly.security.manager", false, false, true,
+                                                false));
+                // TODO use the name of the modules after renaming, and add any other
+                // dependencies
+                // In this case we don't need any classes from the subsystem module itself so we
+                // don't need to add it to the
+                // deployment's module dependencies
+                moduleSpecification.addSystemDependency(new ModuleDependency(moduleLoader,
+                                "org.wildfly.extension.mvc-krazo", false, false, true, false));
+
+                // all modules get the API dependency
+                moduleSpecification.addSystemDependency(
+                                cdiDependency(new ModuleDependency(moduleLoader, MVC_API, false, false, true, false)));
+                log.info("### MVC Krazo isMVCDeployment ### " + isMVCDeployment(deploymentUnit));
+                if (!isMVCDeployment(deploymentUnit)) {
+                        return;
+                }
+
+                log.debugf("Initializing Krazo for deployment %s", deploymentUnit.getName());
+
+                moduleSpecification.addSystemDependency(
+                                new ModuleDependency(moduleLoader, "org.jboss.resteasy.resteasy-jaxrs", false, false,
+                                                true, false));
+                moduleSpecification.addSystemDependency(new ModuleDependency(moduleLoader,
+                                "org.jboss.resteasy.resteasy-validator-provider", false, false, true, false));
+
+                // moduleSpecification.addSystemDependency(cdiDependency(new
+                // ModuleDependency(moduleLoader, "me.andidroid.mvc-krazo-dependency", false,
+                // false, true, false)));
+                moduleSpecification.addSystemDependency(
+                                cdiDependency(new ModuleDependency(moduleLoader, KRAZO, false, false, true, false)));
+                moduleSpecification.addSystemDependency(
+                                cdiDependency(new ModuleDependency(moduleLoader, KRAZO_RESTEASY, false, false, true,
+                                                false)));
+
+                moduleSpecification.addSystemDependency(cdiDependency(
+                                new ModuleDependency(moduleLoader, "org.eclipse.krazo.ext.krazo-jinja2", true, true,
+                                                true, false)));
+                moduleSpecification.addSystemDependency(cdiDependency(
+                                new ModuleDependency(moduleLoader, "org.eclipse.krazo.ext.krazo-velocity", true, true,
+                                                true, false)));
+
+                moduleSpecification.addSystemDependency(
+                                cdiDependency(new ModuleDependency(moduleLoader, "com.hubspot.jinjava", true, true,
+                                                true, false)));
+                moduleSpecification.addSystemDependency(
+                                cdiDependency(new ModuleDependency(moduleLoader, "org.apache.velocity", true, true,
+                                                true, false)));
+
+                log.info("### MVC Krazo modules registered ### " + isMVCDeployment(deploymentUnit));
+        }
+
+        private boolean isMVCDeployment(DeploymentUnit deploymentUnit) {
+                final CompositeIndex index = deploymentUnit.getAttachment(Attachments.COMPOSITE_ANNOTATION_INDEX);
+
+                final List<AnnotationInstance> annotations = index.getAnnotations(CONTROLLER);
+                return !annotations.isEmpty();
+        }
+
+        private ModuleDependency cdiDependency(ModuleDependency moduleDependency) {
+                // This is needed following https://issues.redhat.com/browse/WFLY-13641 /
+                // https://github.com/wildfly/wildfly/pull/13406
+                moduleDependency.addImportFilter(new PathFilter() {
+
+                        public boolean accept(String s) {
+                                return s.equals("META-INF");
+                        }
+
+                }, true);
+                return moduleDependency;
+        }
 }

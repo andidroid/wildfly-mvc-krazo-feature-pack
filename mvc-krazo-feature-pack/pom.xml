@@ -19,7 +19,7 @@
     <parent>
         <groupId>me.andidroid</groupId>
         <artifactId>wildfly-mvc-krazo-feature-pack-parent</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>0.0.3-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -180,7 +180,16 @@
             <artifactId>krazo-jinja2</artifactId>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>de.chkal.mvc-toolbox</groupId>
+            <artifactId>mvc-toolbox-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.chkal.mvc-toolbox</groupId>
+            <artifactId>mvc-toolbox-jsp</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
     </dependencies>
 </project>

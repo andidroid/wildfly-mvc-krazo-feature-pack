@@ -39,76 +39,78 @@ import org.wildfly.extension.feature.pack.mvc.krazo.subsystem.deployment.Depende
 /**
  * @author <a href="mailto:kabir.khan@jboss.com">Kabir Khan</a>
  */
-public class MvcKrazoSubsystemDefinition extends PersistentResourceDefinition
-{
-    
+public class MvcKrazoSubsystemDefinition extends PersistentResourceDefinition {
+
     // TODO Change this to something that makes sense for your subsystem
     private static final String SUBSYSTEM_CAPABILITY_NAME = "mvc.krazo";
-    
-    private static final RuntimeCapability<Void> CONTEXT_PROPAGATION_CAPABILITY = RuntimeCapability.Builder.of(SUBSYSTEM_CAPABILITY_NAME).addRequirements(WELD_CAPABILITY_NAME).build();
-    
-    public MvcKrazoSubsystemDefinition()
-    {
-        super(new SimpleResourceDefinition.Parameters(MvcKrazoExtension.SUBSYSTEM_PATH, MvcKrazoExtension.getResourceDescriptionResolver(MvcKrazoExtension.SUBSYSTEM_NAME)).setAddHandler(AddHandler.INSTANCE)
+
+    private static final RuntimeCapability<Void> CONTEXT_PROPAGATION_CAPABILITY = RuntimeCapability.Builder
+            .of(SUBSYSTEM_CAPABILITY_NAME).addRequirements(WELD_CAPABILITY_NAME).build();
+
+    public MvcKrazoSubsystemDefinition() {
+        super(new SimpleResourceDefinition.Parameters(MvcKrazoExtension.SUBSYSTEM_PATH,
+                MvcKrazoExtension.getResourceDescriptionResolver(MvcKrazoExtension.SUBSYSTEM_NAME))
+                .setAddHandler(AddHandler.INSTANCE)
                 .setRemoveHandler(new ModelOnlyRemoveStepHandler()).setCapabilities(CONTEXT_PROPAGATION_CAPABILITY));
     }
-    
+
     @Override
-    public Collection<AttributeDefinition> getAttributes()
-    {
+    public Collection<AttributeDefinition> getAttributes() {
         return Collections.emptyList();
     }
-    
+
     @Override
-    public void registerAdditionalRuntimePackages(ManagementResourceRegistration resourceRegistration)
-    {
-        //super.registerAdditionalRuntimePackages(resourceRegistration);
-        // TODO - If your feature-pack needs any other modules, you should add those here, and remove the line above
+    public void registerAdditionalRuntimePackages(ManagementResourceRegistration resourceRegistration) {
+        // super.registerAdditionalRuntimePackages(resourceRegistration);
+        // TODO - If your feature-pack needs any other modules, you should add those
+        // here, and remove the line above
         /*
          * resourceRegistration.registerAdditionalRuntimePackages(
          * // Required dependencies are always added
          * RuntimePackageDependency.required("my.required.module"),
-         * // Optional and passive modules depend on the 'optional-packages' mode. See the Galleon
+         * // Optional and passive modules depend on the 'optional-packages' mode. See
+         * the Galleon
          * // documentation for more details as this is an advanced feature
          * RuntimePackageDependency.optional("my.optional.module"),
          * RuntimePackageDependency.passive("my.passive.module")
          * );
          */
-         System.out.println("### MVC Krazo registerAdditionalRuntimePackages ###");
-         resourceRegistration.registerAdditionalRuntimePackages(
+        System.out.println("### MVC Krazo registerAdditionalRuntimePackages ###");
+        resourceRegistration.registerAdditionalRuntimePackages(
                 RuntimePackageDependency.required("jakarta.mvc.api"),
                 RuntimePackageDependency.required("org.jboss.resteasy.resteasy-jaxrs"),
+                RuntimePackageDependency.required("org.wildfly.security.manager"),
                 RuntimePackageDependency.required("org.eclipse.krazo.krazo-core"),
                 RuntimePackageDependency.required("org.eclipse.krazo.krazo-resteasy"),
+                RuntimePackageDependency.required("org.eclipse.krazo.mvc-toolbox"),
                 RuntimePackageDependency.optional("org.eclipse.krazo.ext.krazo-jinja2"),
+                RuntimePackageDependency.optional("com.hubspot.jinjava"),
                 RuntimePackageDependency.optional("org.eclipse.krazo.ext.krazo-velocity"),
-                RuntimePackageDependency.required("org.wildfly.security.manager"));
+                RuntimePackageDependency.optional("org.apache.velocity"));
+
     }
-    
-    static class AddHandler extends AbstractBoottimeAddStepHandler
-    {
-        
+
+    static class AddHandler extends AbstractBoottimeAddStepHandler {
+
         static AddHandler INSTANCE = new AddHandler();
-        
-        private AddHandler()
-        {
+
+        private AddHandler() {
             // super(Collections.emptyList());
         }
-        
+
         @Override
-        protected void performBoottime(OperationContext context, ModelNode operation, ModelNode model) throws OperationFailedException
-        {
+        protected void performBoottime(OperationContext context, ModelNode operation, ModelNode model)
+                throws OperationFailedException {
             super.performBoottime(context, operation, model);
-            
-            context.addStep(new AbstractDeploymentChainStep()
-            {
-                public void execute(DeploymentProcessorTarget processorTarget)
-                {
+
+            context.addStep(new AbstractDeploymentChainStep() {
+                public void execute(DeploymentProcessorTarget processorTarget) {
                     final int DEPENDENCIES_TEMPLATE = 6304;
-                    processorTarget.addDeploymentProcessor(MvcKrazoExtension.SUBSYSTEM_NAME, DEPENDENCIES, DEPENDENCIES_TEMPLATE, new DependencyProcessor());
+                    processorTarget.addDeploymentProcessor(MvcKrazoExtension.SUBSYSTEM_NAME, DEPENDENCIES,
+                            DEPENDENCIES_TEMPLATE, new DependencyProcessor());
                 }
             }, RUNTIME);
-            
+
             System.out.println("### MVC Krazo activatingSubsystem ###");
             // MvcKrazoLogger.LOGGER.activatingSubsystem();
         }
