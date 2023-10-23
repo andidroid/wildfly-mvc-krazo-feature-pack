@@ -110,7 +110,7 @@
         <mvc-toolbox.version>2.1.0</mvc-toolbox.version>
         <resteasy.version>6.2.5.Final</resteasy.version>
 
-        <freemarker.version>2.3.31</freemarker.version>
+        <freemarker.version>2.3.32</freemarker.version>
         <velocity.version>2.3</velocity.version>
         <antlr.version>3.5.2</antlr.version>
         <stringtemplate.version>4.3.4</stringtemplate.version>
