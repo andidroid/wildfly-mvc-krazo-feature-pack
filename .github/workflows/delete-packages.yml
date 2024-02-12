@@ -5,7 +5,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/delete-package-versions@v4
+      - uses: actions/delete-package-versions@v5
         with:
           package-name: "me.andidroid.wildfly-mvc-krazo-feature-pack"
           # num-old-versions-to-delete: 5
